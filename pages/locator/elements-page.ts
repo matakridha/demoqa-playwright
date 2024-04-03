@@ -24,10 +24,10 @@ export class Elements {
         };
 
         this.textBox = {
-            inputFullName : page.locator('input[id=userName]'),
-            inputEmail : page.locator('input[id=userEmail]'),
-            inputCurrentAddress : page.locator('textarea[id=currentAddress]'),
-            inputPermaAddress : page.locator('textarea[id=permanentAddress]'),
+            inputFullName : page.locator('#userName]'),
+            inputEmail : page.locator('#userEmail'),
+            inputCurrentAddress : page.locator('#currentAddress]'),
+            inputPermaAddress : page.locator('#permanentAddress]'),
             btnSubmit : page.locator('button[id=submit]'),
         };
 
