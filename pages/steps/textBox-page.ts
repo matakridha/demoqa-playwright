@@ -1,23 +1,20 @@
 import { Page, Locator } from "playwright";
-import { Elements } from "../locator/elements-page";
+import { elementsPage } from "../locator/elements-page";
 import { expect } from "playwright/test";
 import * as faker from 'faker';
 
 const expectUrl = 'https://demoqa.com/text-box';
 
 // Define elements globally
-let elements: Elements;
+let elements: elementsPage;
 // Initialize elements in a function before using it
 export async function initializeElements(page: Page) {
-    elements = new Elements(page);
+    elements = new elementsPage(page);
 }
 
 export class textBox {
     readonly page:Page;
-
-    constructor (page:Page){
-        this.page = page;
-    }
+    constructor (page:Page){this.page = page;}
    
     async inputCorrectValue(){
         //declarate variable with faker value

@@ -1,6 +1,6 @@
 import { Page,Locator } from "playwright";
 
-export class Elements {
+export class elementsPage {
     readonly page:Page;
     readonly elementMenu: { [key: string]: Locator; };
     readonly textBox: { [key: string]: Locator; };

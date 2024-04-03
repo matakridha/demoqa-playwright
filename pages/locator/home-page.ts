@@ -1,6 +1,9 @@
 import { Page,Locator } from "playwright";
+import { expect } from "playwright/test";
 
-export class HomePage{
+
+
+export class homePage{
     readonly page:Page;
     readonly menuPage: {
         [key:string]:Locator;
@@ -16,5 +19,9 @@ export class HomePage{
             btnInteractions : page.locator('//h5[text()="Interactions"'),
             btnBookStore : page.locator('//h5[text()="Book Store Application"'),
         }
+    }
+
+    async goToElement(){
+        await this.menuPage.btnElements.click();
     }
 }
