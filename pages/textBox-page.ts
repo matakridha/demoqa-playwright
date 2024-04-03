@@ -10,10 +10,6 @@ export class textBox {
 
     constructor (page:Page){
         this.page = page;
-        this.inputFullName = page.locator('input[id=userName]');
-        this.inputEmail = page.locator('input[id=userEmail]');
-        this.inputCurrentAddress = page.locator('textarea[id=currentAddress]');
-        this.inputPermaAddress = page.locator('textarea[id=permanentAddress]');
-        this.btnSubmit = page.locator('button[id=submit]');
+
     }
 }
