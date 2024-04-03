@@ -29,7 +29,7 @@ test.describe('Positive Testing',() => {
         await TextBox.inputCorrectValue();
     })
     test ('Input Form with valid value', async ({page}) =>{
-        await HomePage.goToElement();
+        await HomePage.goToForm();
         await FormsPractice.inputValidForm();
         await FormsPage.btnSubmit.click();
         await FormsPractice.verifyFormValue();
