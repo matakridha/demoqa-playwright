@@ -4,6 +4,7 @@ export class formsPage {
     readonly page:Page;
     readonly form: { [key: string]: Locator};
     readonly datePicker: { [key: string]: Locator};
+    readonly btnSubmit:Locator;
 
     constructor (page:Page) {
         this.page = page;
@@ -15,10 +16,23 @@ export class formsPage {
             gFemale : page.locator('#gender-radio-2'),
             gOther : page.locator('#gender-radio-3'),
             pNumber : page.locator('#userNumber'),
+            dateOfBirth : page.locator('#dateOfBirthInput'),
             subject : page.locator('input#subjectsInput'),
             hobby1 : page.locator('hobbies-checkbox-1'),
             hobby2 : page.locator('hobbies-checkbox-2'),
             hobby3 : page.locator('hobbies-checkbox-3'),
+            uploadPicture : page.locator('#uploadPicture'),
+            currentAddress : page.locator('#currentAddress'),
+            state : page.locator('#state'),
+            city : page.locator('#city'),
         }
+        this.datePicker = {
+            monthDD : page.locator('select.react-datepicker__month-select'),
+            yearDD : page.locator('select.react-datepicker__year-select'),
+            weekDD : page.locator('select.react-datepicker__day-select'),
+            dayPic : page.locator('.react-datepicker__day[aria-label="Choose Tuesday, February 20th, 2024"]'),
+
+        }
+        this.btnSubmit = page.locator('#submit');
     }
 }
