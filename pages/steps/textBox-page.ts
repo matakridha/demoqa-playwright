@@ -5,6 +5,12 @@ import * as faker from 'faker';
 
 const expectUrl = 'https://demoqa.com/text-box';
 
+// Define elements globally
+let elements: Elements;
+// Initialize elements in a function before using it
+export async function initializeElements(page: Page) {
+    elements = new Elements(page);
+}
 
 export class textBox {
     readonly page:Page;
@@ -14,7 +20,6 @@ export class textBox {
     }
    
     async inputCorrectValue(){
-        const elements = new Elements(this.page);
         //declarate variable with faker value
         const rName = faker.name.firstName();
         const rEmail = faker.internet.email();
@@ -41,7 +46,20 @@ export class textBox {
         expect(pAddressText).toContain('Name:'+ rPaddress);
     }
 
-    async inputIncorrectValue(){
-        const elements = new Elements(this.page);
+    async inputIncorrectEmail(){
+        const errorEmail = this.page.locator('.mr-sm-2.field-error.form-control');
+        
+        expect(errorEmail).toBeHidden;
+        await elements.textBox.inputEmail.type('notAnEmail');
+        await elements.textBox.btnSubmit.click();
+
+        expect(errorEmail).toBeVisible;
+    }
+
+    async inputNothing(){
+        await expect(this.page).toHaveURL(expectUrl);
+        await elements.textBox.btnSubmit.click();
+        const contentPopUp = this.page.locator('//div[contains(@class, "border col-md-12 col-sm-12")]');
+        expect(contentPopUp).toBeHidden;
     }
 }
