@@ -6,20 +6,14 @@ import { transcode } from "buffer";
 
 const expectUrl = 'https://demoqa.com/automation-practice-form';
 
-// Define elements globally
-let FormsPage: formsPage;
-// Initialize elements in a function before using it
-export async function initializeElements(page: Page) {
-    FormsPage = new formsPage(page);
-}
-
 export class formsPractice{
     readonly page:Page;
+    readonly afName:Locator;
     readonly fakerElement: {[key: string]: string};
 
     constructor(page:Page){
         this.page = page;
-
+        this.afName = page.locator('#firstName');
         this.fakerElement = {
             rfName : '',
             rlName : '',
@@ -30,16 +24,26 @@ export class formsPractice{
     }
 
     async inputValidForm(){
+        const FormsPage = new formsPage(this.page);
         this.fakerElement.rfName = faker.name.firstName();
         this.fakerElement.rlName = faker.name.lastName();
         this.fakerElement.rEmail = faker.internet.email();
-        this.fakerElement.rNumber = faker.phone.phoneNumber();
+        //this.fakerElement.rNumber = faker.phone.phoneNumber();
         this.fakerElement.rCaddress = faker.address.streetAddress();
         
+        await FormsPage.form.side2.click();
+
+        await FormsPage.form.sForm.isVisible();
+        await FormsPage.form.sForm.click();
+
+        await this.afName.isVisible();
         await FormsPage.form.fName.type(this.fakerElement.rfName);
         await FormsPage.form.lName.type(this.fakerElement.rlName);
         await FormsPage.form.email.type(this.fakerElement.rEmail);
-        await FormsPage.form.pNumber.type(this.fakerElement.rNumber);
+        
+        await FormsPage.form.gMale.isVisible();
+        await FormsPage.form.gMale.click();
+        await FormsPage.form.pNumber.type('0813424927');
         await FormsPage.form.currentAddress.type(this.fakerElement.rCaddress);
 
         await FormsPage.form.state.type('NCR');

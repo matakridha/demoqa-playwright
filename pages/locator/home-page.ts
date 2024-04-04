@@ -14,6 +14,7 @@ export class homePage{
         this.menuPage = {
             btnElements : page.locator('//h5[text()="Elements"]'),
             btnForms : page.locator('//h5[text()="Forms"]'),
+            btnForms2 : page.locator('div.card-body > h5:has-text("Forms")'),
             btnAlrets : page.locator('//h5[text()="Alerts, Frame & Windows"]'),
             btnWidgets : page.locator('//h5[text()="Widgets"]'),
             btnInteractions : page.locator('//h5[text()="Interactions"]'),
@@ -25,6 +26,6 @@ export class homePage{
         await this.menuPage.btnElements.click();
     }
     async goToForm(){
-        await this.menuPage.btnForms.click();
+        await this.menuPage.btnForms2.click();
     }
 }

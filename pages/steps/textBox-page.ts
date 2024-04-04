@@ -4,26 +4,33 @@ import { expect } from "playwright/test";
 import * as faker from 'faker';
 
 const expectUrl = 'https://demoqa.com/text-box';
-
+/*
 // Define elements globally
 let elements: elementsPage;
 // Initialize elements in a function before using it
 export async function initializeElements(page: Page) {
     elements = new elementsPage(page);
 }
-
+*/
 export class textBox {
     readonly page:Page;
-    constructor (page:Page){this.page = page;}
+    readonly sTextBox2:Locator;
+    constructor (page:Page){this.page = page; this.sTextBox2 = page.locator('//span[text()="Text Box"]')}
    
     async inputCorrectValue(){
+        const elements = new elementsPage(this.page);
+
+        await elements.elementMenu.side1.isVisible();
+        await elements.elementMenu.side1.click();
+        await elements.elementMenu.sTextBox.isVisible();
+        await elements.elementMenu.sTextBox.click();
+        await expect(this.page).toHaveURL(expectUrl);
+
         //declarate variable with faker value
         const rName = faker.name.firstName();
         const rEmail = faker.internet.email();
         const rCaddress = faker.address.streetAddress();
         const rPaddress = faker.address.city();
-
-        await expect(this.page).toHaveURL(expectUrl);
         await elements.textBox.inputFullName.type(rName);
         await elements.textBox.inputEmail.type(rEmail);
         await elements.textBox.inputCurrentAddress.type(rCaddress);
@@ -44,6 +51,7 @@ export class textBox {
     }
 
     async inputIncorrectEmail(){
+        const elements = new elementsPage(this.page);
         const errorEmail = this.page.locator('.mr-sm-2.field-error.form-control');
         
         expect(errorEmail).toBeHidden;
@@ -54,6 +62,7 @@ export class textBox {
     }
 
     async inputNothing(){
+        const elements = new elementsPage(this.page);
         await expect(this.page).toHaveURL(expectUrl);
         await elements.textBox.btnSubmit.click();
         const contentPopUp = this.page.locator('//div[contains(@class, "border col-md-12 col-sm-12")]');
