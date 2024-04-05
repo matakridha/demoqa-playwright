@@ -1,6 +1,6 @@
 import { Page,Locator } from "playwright";
 
-export class Elements {
+export class elementsPage {
     readonly page:Page;
     readonly elementMenu: { [key: string]: Locator; };
     readonly textBox: { [key: string]: Locator; };
@@ -12,7 +12,7 @@ export class Elements {
         this.elementMenu = {
             side1 : page.locator('.element-group:nth-child(1)'),
             
-            sTextBox : page.locator('li#item-0.btn.btn-light'),
+            sTextBox : page.locator('//span[text()="Text Box"]'),
             sCheckBox : page.locator('li#item-0.btn.btn-light'),
             sRadioBox : page.locator('li#item-0.btn.btn-light'),
             sWebTable : page.locator('li#item-0.btn.btn-light'),
@@ -24,10 +24,10 @@ export class Elements {
         };
 
         this.textBox = {
-            inputFullName : page.locator('#userName]'),
+            inputFullName : page.locator('#userName'),
             inputEmail : page.locator('#userEmail'),
-            inputCurrentAddress : page.locator('#currentAddress]'),
-            inputPermaAddress : page.locator('#permanentAddress]'),
+            inputCurrentAddress : page.locator('#currentAddress'),
+            inputPermaAddress : page.locator('#permanentAddress'),
             btnSubmit : page.locator('button[id=submit]'),
         };
 
