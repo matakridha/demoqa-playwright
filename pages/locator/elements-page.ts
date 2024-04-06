@@ -87,6 +87,10 @@ export class ElementsPage {
             btnDoubleClick : page.locator('#doubleClickBtn'),
             btnRightClick : page.locator('#rightClickBtn'),
             btnDynamic : page.locator('#ngt6K'),
+
+            textDoubleClick : page.locator('#doubleClickMessage'),
+            textRightClick : page.locator('#rightClickMessage'),
+            textDynamicClick : page.locator('#dynaimcClickMessage'),
         }
 
         this.links = {
