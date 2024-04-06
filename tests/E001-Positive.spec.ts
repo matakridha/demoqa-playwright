@@ -6,6 +6,7 @@ import { formsPractice } from '../pages/steps/formsPractice';
 import { formsPage } from '../pages/locator/forms-page';
 import { checkBox } from '../pages/steps/checkBox-page';
 import { radioButton } from '../pages/steps/radioButton-page';
+import { webTables } from '../pages/steps/webTables-page';
 
 const URL = 'https://demoqa.com';
 
@@ -14,13 +15,13 @@ test.describe('Positive Testing',() => {
         await page.goto(URL);
         await expect(page).toHaveURL(URL);
     })
-    test ('text box - Input TextBox with correct value', async ({page}) =>{
+    test ('text box - smoke tes Input TextBox with correct value', async ({page}) =>{
         const HomePage = new homePage(page);
         const TextBox = new textBox(page);
         await HomePage.goToElement();
         await TextBox.inputCorrectValue();
     })
-    test ('form - Input Form with valid value', async ({page}) =>{
+    test ('form - smoke tes Input Form with valid value', async ({page}) =>{
         const HomePage = new homePage(page);
         const FormsPractice = new formsPractice(page);
         const FormsPage = new formsPage(page);
@@ -29,7 +30,7 @@ test.describe('Positive Testing',() => {
         await FormsPage.btnSubmit.click();
         await FormsPractice.verifyFormValue();
     })
-    test ('check box - function', async ({page}) => {
+    test ('check box - smoke tes function', async ({page}) => {
         const HomePage = new homePage(page);
         const CheckBox = new checkBox(page);
         await HomePage.goToElement();
@@ -40,12 +41,23 @@ test.describe('Positive Testing',() => {
         await CheckBox.selectMultiple();
         await CheckBox.verifySelectedMulti();
     })
-    test ('radio box - test function', async ({page}) => {
+    test ('radio box - smoke test function', async ({page}) => {
         const HomePage = new homePage(page);
         const RadioButton = new radioButton(page);
         await HomePage.goToElement();
         await RadioButton.selectYes();
         await RadioButton.verifyRadioYes();
+    })
+    test ('web tables - smoke tes function', async ({page}) => {
+        const HomePage = new homePage(page);
+        const WebTables = new webTables(page);
+        await HomePage.goToElement();
+        await WebTables.addNewData();
+        await WebTables.verifyNewData();
+        await WebTables.searchData();
+        await WebTables.verifySearchData();
+        await WebTables.faker5data();
+        await WebTables.limitListAndVerify();
     })
 });
 
