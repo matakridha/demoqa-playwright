@@ -6,6 +6,11 @@ export class ElementsPage {
     readonly textBox: { [key: string]: Locator; };
     readonly checkBox: { [key: string]: Locator; };
     readonly radioButton: { [key: string]: Locator; };
+    readonly webTables: { [key: string]: Locator; };
+    readonly buttons: { [key: string]: Locator; };
+    readonly links: { [key: string]: Locator; };
+    readonly UpDown: { [key: string]: Locator; };
+    readonly DynamicProperty: { [key: string]: Locator; };
 
     constructor (page:Page){
         this.page = page;
@@ -17,12 +22,12 @@ export class ElementsPage {
             sTextBox : page.locator('//span[text()="Text Box"]'),
             sCheckBox : page.locator('//span[text()="Check Box"]'),
             sRadioBox : page.locator('//span[text()="Radio Button"]'),
-            sWebTable : page.locator('li#item-0.btn.btn-light'),
-            sButton : page.locator('li#item-0.btn.btn-light'),
-            sLink : page.locator('li#item-0.btn.btn-light'),
-            sBrokenLink : page.locator('li#item-0.btn.btn-light'),
-            sUploadDownload : page.locator('li#item-0.btn.btn-light'),
-            sDynamicProperty : page.locator('li#item-0.btn.btn-light'),
+            sWebTable : page.locator('//span[text()="Web Tables"]'),
+            sButton : page.locator('//span[text()="Buttons"]'),
+            sLink : page.locator('//span[text()="Links"]'),
+            sBrokenLink : page.locator('//span[text()="Broken Links - Images"]'),
+            sUploadDownload : page.locator('//span[text()="Upload and Download"]'),
+            sDynamicProperty : page.locator('//span[text()="Dynamic Properties"]'),
         };
 
         this.textBox = {
@@ -54,6 +59,63 @@ export class ElementsPage {
             radioImpressive : page.locator('#impressiveRadio'),
             radioDisable : page.locator('#noRadio'),
         }
+
+        this.webTables = {
+            btnAdd : page.locator('#addNewRecordButton'),
+            txtTitle : page.locator('#registration-form-modal'),
+            inputfName : page.locator('#firstName'),
+            inputlName : page.locator('#lastName'),
+            inputEmail : page.locator('#userEmail'),
+            inputAge : page.locator('#age'),
+            inputSalary : page.locator('#salary'),
+            inputDepartement : page.locator('#department'),
+            btnSubmit : page.locator('#submit'),
+
+            inputSearch : page.locator('#searchBox'),
+            btnSearch : page.locator('#basic-addon2'),
+            btnEdit1 : page.locator('#edit-record-1'),
+            btnDelete1 : page.locator('#delete-record-1'),
+            
+            btnList : page.locator('//span[@class="select-wrap -pageSizeOptions"]'),
+            btnOption5 : page.locator('//option[@value="5"]'),
+            btnOption10 : page.locator('//option[@value="10"]'),
+            btnOption20 : page.locator('//option[@value="20"]'),
+            btnOption25 : page.locator('//option[@value="25"]'),
+        }
+
+        this.buttons = {
+            btnDoubleClick : page.locator('#doubleClickBtn'),
+            btnRightClick : page.locator('#rightClickBtn'),
+            btnDynamic : page.locator('#ngt6K'),
+
+            textDoubleClick : page.locator('#doubleClickMessage'),
+            textRightClick : page.locator('#rightClickMessage'),
+            textDynamicClick : page.locator('#dynaimcClickMessage'),
+        }
+
+        this.links = {
+            linkHome : page.locator('#simpleLink'),
+            linkHomeIEE : page.locator('#dynamicLink'),
+            apiCreated : page.locator('#created'),
+            apiNoContent : page.locator('#no-content'),
+            apiMoved : page.locator('#moved'),
+            apiBadRequest : page.locator('#bad-request'),
+            apiUnauthorized : page.locator('#unauthorized'),
+            apiForbidden : page.locator('#forbidden'),
+            apiInvalidUrl : page.locator('#invalid-url'),
+        }
+
+        this.UpDown = {
+            btnDownload : page.locator('#downloadButton'),
+            btnUpload : page.locator('#uploadFile'),
+        }
+
+        this.DynamicProperty = {
+            btnVisibleBefore : page.locator('#enableAfter'),
+            btnColor : page.locator('#colorChange'),
+            btnVisibleAfter : page.locator('#visibleAfter'),
+        }
+        
     }
 }
 
