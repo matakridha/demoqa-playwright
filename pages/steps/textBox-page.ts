@@ -1,5 +1,5 @@
 import { Page, Locator } from "playwright";
-import { elementsPage } from "../locator/elements-page";
+import { ElementsPage } from "../locator/elements-page";
 import { expect } from "playwright/test";
 import * as faker from 'faker';
 
@@ -18,7 +18,7 @@ export class textBox {
     constructor (page:Page){this.page = page; this.sTextBox2 = page.locator('//span[text()="Text Box"]')}
    
     async inputCorrectValue(){
-        const elements = new elementsPage(this.page);
+        const elements = new ElementsPage(this.page);
 
         await elements.elementMenu.side1.isVisible();
         await elements.elementMenu.side1.click();
@@ -51,7 +51,7 @@ export class textBox {
     }
 
     async inputIncorrectEmail(){
-        const elements = new elementsPage(this.page);
+        const elements = new ElementsPage(this.page);
         const errorEmail = this.page.locator('.mr-sm-2.field-error.form-control');
         
         expect(errorEmail).toBeHidden;
@@ -62,7 +62,7 @@ export class textBox {
     }
 
     async inputNothing(){
-        const elements = new elementsPage(this.page);
+        const elements = new ElementsPage(this.page);
         await expect(this.page).toHaveURL(expectUrl);
         await elements.textBox.btnSubmit.click();
         const contentPopUp = this.page.locator('//div[contains(@class, "border col-md-12 col-sm-12")]');
