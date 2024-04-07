@@ -96,13 +96,6 @@ export class ElementsPage {
         this.links = {
             linkHome : page.locator('#simpleLink'),
             linkHomeIEE : page.locator('#dynamicLink'),
-            apiCreated : page.locator('#created'),
-            apiNoContent : page.locator('#no-content'),
-            apiMoved : page.locator('#moved'),
-            apiBadRequest : page.locator('#bad-request'),
-            apiUnauthorized : page.locator('#unauthorized'),
-            apiForbidden : page.locator('#forbidden'),
-            apiInvalidUrl : page.locator('#invalid-url'),
         }
 
         this.UpDown = {
