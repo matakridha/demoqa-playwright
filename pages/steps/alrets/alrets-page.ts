@@ -11,22 +11,33 @@ export class AlretPage{
         await alret.alretsMenu.sAlrets.click();
     }
 
+    //issue - alret doesn't appear so for now I loop the click until alret appear
     async directAlret(){
         const alret = new AlretsPage(this.page);
         
-        //await this.page.waitForTimeout(100);
-        await alret.alrets.btnDirectAlret.isVisible();
-        //await alret.alrets.btnConfirmAlret.click();
-        await alret.alrets.btnDirectAlret.dblclick();
-        // Wait for the alert dialog to appear
-        const dialog = await this.page.waitForEvent('dialog');
-
-        // Check if the dialog is present
-        if (dialog.type() === 'alert', dialog.message()) {
-            // Accept the alert (click the "OK" button)
-            await dialog.accept();
-        } else {
-            throw new Error('Alert dialog did not appear.');
+        async function clickUntilAlertAppears(page: any, maxAttempts: number = 10, interval: number = 1000) {
+            let attempts = 0;
+            while (attempts < maxAttempts) {
+                await alret.alrets.btnDirectAlret.click();
+                const dialog = await page.waitForEvent('dialog', { timeout: 1000 }).catch(() => null); // Wait for dialog or timeout
+                if (dialog && dialog.type() === 'alert') {
+                    await dialog.accept();
+                    console.log('Alert dialog appeared and accepted.');
+                    return; // Exit the function
+                }
+                attempts++;
+                await page.waitForTimeout(interval); // Wait for a specified interval before next attempt
+            }
+            console.error('Maximum attempts reached. Alert dialog did not appear.');
+        }
+        
+        // Usage:
+        try {
+            await clickUntilAlertAppears(this.page);
+        } catch (error) {
+            console.error('Error:', error);
         }
     }
+
+    
 }

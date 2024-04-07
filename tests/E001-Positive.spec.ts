@@ -13,6 +13,7 @@ import { link } from 'fs';
 import { UpDownPage } from '../pages/steps/elements/upDown-page';
 import { DynamicPage } from '../pages/steps/elements/dynamic-page';
 import { AlretPage } from '../pages/steps/alrets/alrets-page';
+import { ModalPage } from '../pages/steps/alrets/modal-page';
 
 const URL = 'https://demoqa.com';
 
@@ -120,10 +121,19 @@ test.describe('Positive Testing - Alrets',() => {
     test ('alret - smoke test function', async ({page}) => {
         const HomePage = new homePage(page);
         const alret = new AlretPage(page);
-        
+        //issue - alret doesn't appear
         await HomePage.goToAlrets();
         await alret.goToAlret();
         await alret.directAlret();
+    })
+    test ('modal - smoke test function', async ({page}) => {
+        const HomePage = new homePage(page);
+        const modal = new ModalPage(page);
+        
+        await HomePage.goToAlrets();
+        await modal.goToModal();
+        await modal.smallModal();
+        await modal.verifySmallModal();
     })
 });
 
