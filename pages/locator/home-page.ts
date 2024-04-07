@@ -28,4 +28,7 @@ export class homePage{
     async goToForm(){
         await this.menuPage.btnForms2.click();
     }
+    async goToAlrets(){
+        await this.menuPage.btnAlrets.click();
+    }
 }

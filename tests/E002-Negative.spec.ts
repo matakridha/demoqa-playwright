@@ -1,7 +1,7 @@
 import { test, expect, Page } from '@playwright/test';
-import { textBox } from '../pages/steps/textBox-page';
+import { textBox } from '../pages/steps/elements/textBox-page';
 import { homePage } from '../pages/locator/home-page';
-import { formsPractice } from '../pages/steps/formsPractice';
+import { formsPractice } from '../pages/steps/elements/formsPractice';
 import { formsPage } from '../pages/locator/forms-page';
 
 const URL = 'https://demoqa.com';

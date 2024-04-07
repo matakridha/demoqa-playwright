@@ -1,21 +1,22 @@
 import { test, expect, Page } from '@playwright/test';
-import { textBox } from '../pages/steps/textBox-page';
+import { textBox } from '../pages/steps/elements/textBox-page';
 import { ElementsPage } from '../pages/locator/elements-page';
 import { homePage } from '../pages/locator/home-page';
-import { formsPractice } from '../pages/steps/formsPractice';
+import { formsPractice } from '../pages/steps/elements/formsPractice';
 import { formsPage } from '../pages/locator/forms-page';
-import { checkBox } from '../pages/steps/checkBox-page';
-import { radioButton } from '../pages/steps/radioButton-page';
-import { webTables } from '../pages/steps/webTables-page';
-import { ButtonsPage } from '../pages/steps/buttons-page';
-import { LinksPage } from '../pages/steps/links-page';
+import { checkBox } from '../pages/steps/elements/checkBox-page';
+import { radioButton } from '../pages/steps/elements/radioButton-page';
+import { webTables } from '../pages/steps/elements/webTables-page';
+import { ButtonsPage } from '../pages/steps/elements/buttons-page';
+import { LinksPage } from '../pages/steps/elements/links-page';
 import { link } from 'fs';
-import { UpDownPage } from '../pages/steps/upDown-page';
-import { DynamicPage } from '../pages/steps/dynamic-page';
+import { UpDownPage } from '../pages/steps/elements/upDown-page';
+import { DynamicPage } from '../pages/steps/elements/dynamic-page';
+import { AlretPage } from '../pages/steps/alrets/alrets-page';
 
 const URL = 'https://demoqa.com';
 
-test.describe.only('Positive Testing',() => {
+test.describe.only('Positive Testing Elements',() => {
     test.beforeEach(async ({page}) => {
         await page.goto(URL);
         await expect(page).toHaveURL(URL);
@@ -108,6 +109,21 @@ test.describe.only('Positive Testing',() => {
         await dynamic.goToDynamicProperty();
         await dynamic.waitToEnable();
         await dynamic.verifyDifferent();
+    })
+});
+
+test.describe('Positive Testing - Alrets',() => {
+    test.beforeEach(async ({page}) => {
+        await page.goto(URL);
+        await expect(page).toHaveURL(URL);
+    })
+    test ('alret - smoke test function', async ({page}) => {
+        const HomePage = new homePage(page);
+        const alret = new AlretPage(page);
+        
+        await HomePage.goToAlrets();
+        await alret.goToAlret();
+        await alret.directAlret();
     })
 });
 

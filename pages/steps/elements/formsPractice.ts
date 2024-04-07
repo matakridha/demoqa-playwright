@@ -1,5 +1,5 @@
 import { Page, Locator } from "playwright";
-import { formsPage } from "../locator/forms-page";
+import { formsPage } from "../../locator/forms-page";
 import { expect } from "playwright/test";
 import * as faker from 'faker';
 import { transcode } from "buffer";

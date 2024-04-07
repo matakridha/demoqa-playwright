@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { ElementsPage } from '../locator/elements-page';
+import { ElementsPage } from '../../locator/elements-page';
 
 export class LinksPage{
     readonly page:Page;
