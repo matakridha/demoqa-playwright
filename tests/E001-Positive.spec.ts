@@ -11,10 +11,11 @@ import { ButtonsPage } from '../pages/steps/buttons-page';
 import { LinksPage } from '../pages/steps/links-page';
 import { link } from 'fs';
 import { UpDownPage } from '../pages/steps/upDown-page';
+import { DynamicPage } from '../pages/steps/dynamic-page';
 
 const URL = 'https://demoqa.com';
 
-test.describe('Positive Testing',() => {
+test.describe.only('Positive Testing',() => {
     test.beforeEach(async ({page}) => {
         await page.goto(URL);
         await expect(page).toHaveURL(URL);
@@ -98,6 +99,15 @@ test.describe('Positive Testing',() => {
         //inject a file to upload input
         await updown.injectUpload();
         await updown.verifyUpdload();
+    })
+    test ('dynamic property - smoke test function', async ({page}) => {
+        const HomePage = new homePage(page);
+        const dynamic = new DynamicPage(page);
+
+        await HomePage.goToElement();
+        await dynamic.goToDynamicProperty();
+        await dynamic.waitToEnable();
+        await dynamic.verifyDifferent();
     })
 });
 
