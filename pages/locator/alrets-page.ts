@@ -27,7 +27,7 @@ export class AlretsPage{
         }
 
         this.alrets = {
-            btnDirectAlret : page.locator('//button[@id="alertButton"]'),
+            btnDirectAlret : page.locator('#alertButton'),
             btnTimeAlret : page.locator('#timerAlertButton'),
             btnConfirmAlret : page.locator('#confirmButton'),
             btnPromptAlert : page.locator('#promtButton'),
