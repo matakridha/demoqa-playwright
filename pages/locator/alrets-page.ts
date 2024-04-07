@@ -27,7 +27,7 @@ export class AlretsPage{
         }
 
         this.alrets = {
-            btnDirectAlret : page.locator('#alertButton'),
+            btnDirectAlret : page.locator('//button[@id="alertButton"]'),
             btnTimeAlret : page.locator('#timerAlertButton'),
             btnConfirmAlret : page.locator('#confirmButton'),
             btnPromptAlert : page.locator('#promtButton'),
@@ -41,7 +41,7 @@ export class AlretsPage{
         this.modalDialogs = {
             smallModal : page.locator('#showSmallModal'),
             largeModal : page.locator('#showLargeModal'),
-            
+
             txtSmallTitle : page.locator('//div[text()="Small Modal"]'),
             txtSmallContent : page.locator('//div[@class="modal-body"]'),
             btnSmallClose : page.locator('#closeSmallModal'),

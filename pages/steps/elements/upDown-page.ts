@@ -1,5 +1,5 @@
 import { Page,Locator } from "playwright";
-import { ElementsPage } from "../locator/elements-page";
+import { ElementsPage } from "../../locator/elements-page";
 import path from 'path';
 import { expect } from "playwright/test";
 import { text } from "stream/consumers";
