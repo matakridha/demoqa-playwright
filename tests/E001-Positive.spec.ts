@@ -14,6 +14,8 @@ import { UpDownPage } from '../pages/steps/elements/upDown-page';
 import { DynamicPage } from '../pages/steps/elements/dynamic-page';
 import { AlretPage } from '../pages/steps/alrets/alrets-page';
 import { ModalPage } from '../pages/steps/alrets/modal-page';
+import { WidgetPage } from '../pages/locator/widget-page';
+import { ProgressPage } from '../pages/steps/widgets/progress-page';
 
 const URL = 'https://demoqa.com';
 
@@ -134,6 +136,25 @@ test.describe('Positive Testing - Alrets',() => {
         await modal.goToModal();
         await modal.smallModal();
         await modal.verifySmallModal();
+    })
+});
+test.describe('Positive Testing - Widget',() => {
+    test.beforeEach(async ({page}) => {
+        await page.goto(URL);
+        await expect(page).toHaveURL(URL);
+    })
+    test ('progress bar - smoke test function', async ({page}) => {
+        const HomePage = new homePage(page);
+        const progressBar = new ProgressPage(page);
+        //issue - alret doesn't appear
+        await HomePage.goToWidget();
+        await progressBar.goToProgressBar();
+        await progressBar.progress70();
+        await progressBar.verifyProgress70();
+        await progressBar.progress100();
+        await progressBar.verifyProgress100();
+        await progressBar.resetProgress();
+        await progressBar.verifyresetProgress();
     })
 });
 

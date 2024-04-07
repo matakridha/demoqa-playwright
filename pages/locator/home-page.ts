@@ -31,4 +31,7 @@ export class homePage{
     async goToAlrets(){
         await this.menuPage.btnAlrets.click();
     }
+    async goToWidget(){
+        await this.menuPage.btnWidgets.click();
+    }
 }
