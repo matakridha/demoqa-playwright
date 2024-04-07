@@ -11,9 +11,9 @@ export class AlretPage{
         await alret.alretsMenu.sAlrets.click();
     }
 
+    //issue - alret doesn't appear
     async directAlret(){
         const alret = new AlretsPage(this.page);
-        
         //await this.page.waitForTimeout(100);
         await alret.alrets.btnDirectAlret.isVisible();
         //await alret.alrets.btnConfirmAlret.click();
