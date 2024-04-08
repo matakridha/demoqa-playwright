@@ -16,6 +16,8 @@ import { AlretPage } from '../pages/steps/alrets/alrets-page';
 import { ModalPage } from '../pages/steps/alrets/modal-page';
 import { WidgetPage } from '../pages/locator/widget-page';
 import { ProgressPage } from '../pages/steps/widgets/progress-page';
+import { SliderPage } from '../pages/steps/widgets/slider-page';
+import { AutoPage } from '../pages/steps/widgets/autoComplate-page';
 
 const URL = 'https://demoqa.com';
 
@@ -140,14 +142,15 @@ test.describe('Positive Testing - Alrets',() => {
 });
 test.describe('Positive Testing - Widget',() => {
     test.beforeEach(async ({page}) => {
+        const HomePage = new homePage(page);
         await page.goto(URL);
         await expect(page).toHaveURL(URL);
+        await page.waitForTimeout(2000);
+        await HomePage.goToWidget();
     })
     test ('progress bar - smoke test function', async ({page}) => {
-        const HomePage = new homePage(page);
         const progressBar = new ProgressPage(page);
         //issue - alret doesn't appear
-        await HomePage.goToWidget();
         await progressBar.goToProgressBar();
         await progressBar.progress70();
         await progressBar.verifyProgress70();
@@ -155,6 +158,22 @@ test.describe('Positive Testing - Widget',() => {
         await progressBar.verifyProgress100();
         await progressBar.resetProgress();
         await progressBar.verifyresetProgress();
+    })
+    test ('slide bar - smoke test function', async ({page}) => {
+        const slidebar = new SliderPage(page);
+        await slidebar.goToSlider();
+        await slidebar.slideTo40();
+        await slidebar.verifySlider40();
+    })
+    test ('auto complate - smoke test function', async ({page}) => {
+        const auto = new AutoPage(page);
+        await auto.goToAuto();
+        
+        await auto.inputMultiAuto();
+        await auto.verifyMutliAuto();
+       
+        await auto.inputSingleAuto();
+        await auto.verifySingleAuto();
     })
 });
 

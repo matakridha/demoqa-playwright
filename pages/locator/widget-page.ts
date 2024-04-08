@@ -5,6 +5,7 @@ export class WidgetPage{
     readonly widgetMenu : { [key: string]: Locator;};
     readonly progressBar : { [key: string]: Locator;};
     readonly sliderBar : { [key: string]: Locator;};
+    readonly autoComplate : { [key: string]: Locator;};
 
     constructor(page:Page){
         this.page = page;
@@ -21,11 +22,17 @@ export class WidgetPage{
         this.progressBar = {
             barProgress : page.locator('//div[@role="progressbar"]'),
             btnContorl : page.locator('#startStopButton'),
+            btnReset : page.locator('#resetButton'),
         }
 
         this.sliderBar = {
             barSlider : page.locator('//input[@type="range"]'),
             sliderValue : page.locator('#sliderValue'),
+        }
+
+        this.autoComplate = {
+            inputMultiAuto : page.locator('#autoCompleteMultipleInput'),
+            inputSingleAuto : page.locator('#autoCompleteSingleInput'),
         }
     }
 }

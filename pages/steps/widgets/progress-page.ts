@@ -20,14 +20,8 @@ export class ProgressPage{
             while (currentProgress < targetValue) {
                 const progressBar = await page.$('[role="progressbar"]');
                 currentProgress = await progressBar.evaluate((bar) => parseInt(bar.getAttribute('aria-valuenow')));
-        
-                if (currentProgress < targetValue) {
-                    console.log(`Progress is at ${currentProgress}%, waiting...`);
-                    //await page.waitForTimeout(1000); // Wait for a short timeout before checking again
-                }
             }
-        
-            console.log(`Progress reached ${targetValue}%, clicking the button...`);
+            //console.log(`Progress reached ${targetValue}%, clicking the button...`);
             await widget.progressBar.btnContorl.click();
         }
         
@@ -52,13 +46,14 @@ export class ProgressPage{
 
     async verifyProgress100(){
         const widget = new WidgetPage(this.page);
-        const progress100 = await this.page.locator('//button[text()="Reset"]');
+        const progress100 = await this.page.locator('//div[@role="progressbar" and @aria-valuenow="100"]');
+        await this.page.waitForTimeout(6000);
         expect (await progress100.isVisible()).toBe(true);
     }
 
     async resetProgress(){
         const widget = new WidgetPage(this.page);
-        await widget.progressBar.btnContorl.click();
+        await widget.progressBar.btnReset.click();
     }
 
     async verifyresetProgress(){
