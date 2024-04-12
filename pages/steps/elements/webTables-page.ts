@@ -55,8 +55,8 @@ export class webTables {
             await element.webTables.inputfName.type(faker.name.firstName());
             await element.webTables.inputlName.type(faker.name.lastName());
             await element.webTables.inputEmail.type(faker.internet.email());
-            await element.webTables.inputAge.type(String(faker.random.number({ min: 18, max: 65 })));
-            await element.webTables.inputSalary.type(String(faker.random.number({ min: 50000, max: 200000 })));
+            await element.webTables.inputAge.type(String(faker.datatype.number({ min: 18, max: 65 })));
+            await element.webTables.inputSalary.type(String(faker.datatype.number({ min: 50000, max: 200000 })));
             await element.webTables.inputDepartement.type(faker.commerce.department());
     
             await element.webTables.btnSubmit.click();
@@ -72,25 +72,25 @@ export class webTables {
         
         await element.webTables.btnList.isVisible();
         await element.webTables.btnList.click();
-        await element.webTables.btnOption5.click();
+        await element.webTables.btnOption.selectOption({ value: '5' });
         expect (await list6.isHidden()).toBe(true);
 
         await element.webTables.btnList.isVisible();
         await element.webTables.btnList.click();
-        await element.webTables.btnOption10.click();
+        await element.webTables.btnOption.selectOption({ value: '10' });
         expect (await list11.isHidden()).toBe(true);
         expect (await list6.isVisible()).toBe(true);
 
         await element.webTables.btnList.isVisible();
         await element.webTables.btnList.click();
-        await element.webTables.btnOption20.click();
+        await element.webTables.btnOption.selectOption({ value: '20' });
         expect (await list6.isVisible()).toBe(true);
         expect (await list11.isVisible()).toBe(true);
         expect (await list21.isHidden()).toBe(true);
 
         await element.webTables.btnList.isVisible();
         await element.webTables.btnList.click();
-        await element.webTables.btnOption25.click();
+        await element.webTables.btnOption.selectOption({ value: '25' });
         expect (await list6.isVisible()).toBe(true);
         expect (await list11.isVisible()).toBe(true);
         expect (await list26.isHidden()).toBe(true);

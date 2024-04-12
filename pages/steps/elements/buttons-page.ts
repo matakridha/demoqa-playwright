@@ -35,6 +35,7 @@ export class ButtonsPage {
     async verifyButtonRightClick(){
         const element = new ElementsPage(this.page);
         await element.buttons.btnRightClick.isVisible();
+        
         expect (await element.buttons.textRightClick.isVisible()).toBe(true);
     }
 

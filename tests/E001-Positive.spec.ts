@@ -70,7 +70,7 @@ test.describe('Positive Testing Elements',() => {
     })
     test ('buttons - smoke test function', async ({page}) => {
         const buttonsPage = new ButtonsPage(page);
-        await buttonsPage.buttonDoubleClick();
+        await buttonsPage.buttonRightClick();
         await buttonsPage.verifyButtonRightClick();
         await buttonsPage.buttonDoubleClick();
         await buttonsPage.verifyButtonDbClick();

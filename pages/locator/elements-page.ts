@@ -77,10 +77,7 @@ export class ElementsPage {
             btnDelete1 : page.locator('#delete-record-1'),
             
             btnList : page.locator('//span[@class="select-wrap -pageSizeOptions"]'),
-            btnOption5 : page.locator('//option[@value="5"]'),
-            btnOption10 : page.locator('//option[@value="10"]'),
-            btnOption20 : page.locator('//option[@value="20"]'),
-            btnOption25 : page.locator('//option[@value="25"]'),
+            btnOption : page.locator('select[aria-label="rows per page"]'),
         }
 
         this.buttons = {
