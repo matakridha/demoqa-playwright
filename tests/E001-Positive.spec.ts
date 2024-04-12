@@ -19,32 +19,29 @@ import { ProgressPage } from '../pages/steps/widgets/progress-page';
 import { SliderPage } from '../pages/steps/widgets/slider-page';
 import { AutoPage } from '../pages/steps/widgets/autoComplate-page';
 
-const URL = 'https://demoqa.com';
 
-test.describe.only('Positive Testing Elements',() => {
+test.describe('Positive Testing Elements',() => {
     test.beforeEach(async ({page}) => {
-        await page.goto(URL);
-        await expect(page).toHaveURL(URL);
-    })
-    test ('text box - smoke test Input TextBox with correct value', async ({page}) =>{
         const HomePage = new homePage(page);
+        test.setTimeout(120000);
+        await page.goto(global.BASE_URL);
+        await expect(page).toHaveURL(global.BASE_URL);
+        test.setTimeout(2000);
+        await HomePage.goToAlrets();
+    })
+    test ('text box - smoke test function', async ({page}) =>{
         const TextBox = new textBox(page);
-        await HomePage.goToElement();
         await TextBox.inputCorrectValue();
     })
-    test ('form - smoke test Input Form with valid value', async ({page}) =>{
-        const HomePage = new homePage(page);
+    test ('form - smoke test fucntion', async ({page}) =>{
         const FormsPractice = new formsPractice(page);
         const FormsPage = new formsPage(page);
-        await HomePage.goToForm();
         await FormsPractice.inputValidForm();
         await FormsPage.btnSubmit.click();
         await FormsPractice.verifyFormValue();
     })
     test ('check box - smoke test function', async ({page}) => {
-        const HomePage = new homePage(page);
         const CheckBox = new checkBox(page);
-        await HomePage.goToElement();
         await CheckBox.selectDesktop();
         await CheckBox.verifySelectedDesktop();
         await CheckBox.selectVeu();
@@ -53,16 +50,12 @@ test.describe.only('Positive Testing Elements',() => {
         await CheckBox.verifySelectedMulti();
     })
     test ('radio box - smoke test function', async ({page}) => {
-        const HomePage = new homePage(page);
         const RadioButton = new radioButton(page);
-        await HomePage.goToElement();
         await RadioButton.selectYes();
         await RadioButton.verifyRadioYes();
     })
     test ('web tables - smoke test function', async ({page}) => {
-        const HomePage = new homePage(page);
         const WebTables = new webTables(page);
-        await HomePage.goToElement();
         await WebTables.addNewData();
         await WebTables.verifyNewData();
         await WebTables.searchData();
@@ -71,9 +64,7 @@ test.describe.only('Positive Testing Elements',() => {
         await WebTables.limitListAndVerify();
     })
     test ('buttons - smoke test function', async ({page}) => {
-        const HomePage = new homePage(page);
         const buttonsPage = new ButtonsPage(page);
-        await HomePage.goToElement();
         await buttonsPage.buttonDoubleClick();
         await buttonsPage.verifyButtonRightClick();
         await buttonsPage.buttonDoubleClick();
@@ -82,9 +73,7 @@ test.describe.only('Positive Testing Elements',() => {
         await buttonsPage.verifyButtonDynamicClick();
     })
     test ('links - smoke test function', async ({page}) => {
-        const HomePage = new homePage(page);
         const linksPage = new LinksPage(page);
-        await HomePage.goToElement();
         await linksPage.goToLink();
         //click link that open new page and verify it
         await linksPage.openSimpleNewPage();
@@ -95,10 +84,7 @@ test.describe.only('Positive Testing Elements',() => {
         await linksPage.callAPIandVerify();
     })
     test ('udDown - smoke test function', async ({page}) => {
-        const HomePage = new homePage(page);
         const updown = new UpDownPage(page);
-
-        await HomePage.goToElement();
         await updown.goToUpDown();
         //download a file and verify it
         await updown.downloadFile();
@@ -107,34 +93,29 @@ test.describe.only('Positive Testing Elements',() => {
         await updown.verifyUpdload();
     })
     test ('dynamic property - smoke test function', async ({page}) => {
-        const HomePage = new homePage(page);
         const dynamic = new DynamicPage(page);
-
-        await HomePage.goToElement();
         await dynamic.goToDynamicProperty();
         await dynamic.waitToEnable();
         await dynamic.verifyDifferent();
     })
 });
-
 test.describe('Positive Testing - Alrets',() => {
     test.beforeEach(async ({page}) => {
-        await page.goto(URL);
-        await expect(page).toHaveURL(URL);
+        const HomePage = new homePage(page);
+        test.setTimeout(120000);
+        await page.goto(global.BASE_URL);
+        await expect(page).toHaveURL(global.BASE_URL);
+        await page.waitForTimeout(2000);
+        await HomePage.goToAlrets();
     })
     test ('alret - smoke test function', async ({page}) => {
-        const HomePage = new homePage(page);
         const alret = new AlretPage(page);
         //issue - alret doesn't appear
-        await HomePage.goToAlrets();
         await alret.goToAlret();
         await alret.directAlret();
     })
     test ('modal - smoke test function', async ({page}) => {
-        const HomePage = new homePage(page);
         const modal = new ModalPage(page);
-        
-        await HomePage.goToAlrets();
         await modal.goToModal();
         await modal.smallModal();
         await modal.verifySmallModal();
@@ -143,8 +124,9 @@ test.describe('Positive Testing - Alrets',() => {
 test.describe('Positive Testing - Widget',() => {
     test.beforeEach(async ({page}) => {
         const HomePage = new homePage(page);
-        await page.goto(URL);
-        await expect(page).toHaveURL(URL);
+        test.setTimeout(120000);
+        await page.goto(global.BASE_URL);
+        await expect(page).toHaveURL(global.BASE_URL);
         await page.waitForTimeout(2000);
         await HomePage.goToWidget();
     })
@@ -168,10 +150,8 @@ test.describe('Positive Testing - Widget',() => {
     test ('auto complate - smoke test function', async ({page}) => {
         const auto = new AutoPage(page);
         await auto.goToAuto();
-        
         await auto.inputMultiAuto();
         await auto.verifyMutliAuto();
-       
         await auto.inputSingleAuto();
         await auto.verifySingleAuto();
     })

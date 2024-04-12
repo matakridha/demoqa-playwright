@@ -6,6 +6,7 @@ export class WidgetPage{
     readonly progressBar : { [key: string]: Locator;};
     readonly sliderBar : { [key: string]: Locator;};
     readonly autoComplate : { [key: string]: Locator;};
+    readonly toolTips : { [key: string]: Locator;};
 
     constructor(page:Page){
         this.page = page;
@@ -33,6 +34,12 @@ export class WidgetPage{
         this.autoComplate = {
             inputMultiAuto : page.locator('#autoCompleteMultipleInput'),
             inputSingleAuto : page.locator('#autoCompleteSingleInput'),
+        }
+
+        this.toolTips = {
+            btnHoover : page.locator('#toolTipButton'),
+            inputHoover : page.locator('#texFieldToolTopContainer'),
+            linkHoover : page.locator('//a[text()="1.10.32"]'),
         }
     }
 }
