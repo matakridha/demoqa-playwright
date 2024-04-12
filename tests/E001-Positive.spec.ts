@@ -32,6 +32,7 @@ test.describe('Positive Testing Elements',() => {
     test ('text box - smoke test function', async ({page}) =>{
         const TextBox = new textBox(page);
         await TextBox.inputCorrectValue();
+        console.log("text box done tested");
     })
     test ('form - smoke test fucntion', async ({page}) =>{
         const FormsPractice = new formsPractice(page);
@@ -39,6 +40,7 @@ test.describe('Positive Testing Elements',() => {
         await FormsPractice.inputValidForm();
         await FormsPage.btnSubmit.click();
         await FormsPractice.verifyFormValue();
+        console.log("form done tested");
     })
     test ('check box - smoke test function', async ({page}) => {
         const CheckBox = new checkBox(page);
@@ -48,11 +50,13 @@ test.describe('Positive Testing Elements',() => {
         await CheckBox.verifySelectedVeu();
         await CheckBox.selectMultiple();
         await CheckBox.verifySelectedMulti();
+        console.log("Check box done tested");
     })
     test ('radio box - smoke test function', async ({page}) => {
         const RadioButton = new radioButton(page);
         await RadioButton.selectYes();
         await RadioButton.verifyRadioYes();
+        console.log("radio box done tested");
     })
     test ('web tables - smoke test function', async ({page}) => {
         const WebTables = new webTables(page);
@@ -62,6 +66,7 @@ test.describe('Positive Testing Elements',() => {
         await WebTables.verifySearchData();
         await WebTables.faker5data();
         await WebTables.limitListAndVerify();
+        console.log("web tables done tested");
     })
     test ('buttons - smoke test function', async ({page}) => {
         const buttonsPage = new ButtonsPage(page);
@@ -71,6 +76,7 @@ test.describe('Positive Testing Elements',() => {
         await buttonsPage.verifyButtonDbClick();
         await buttonsPage.buttonDynamicClick();
         await buttonsPage.verifyButtonDynamicClick();
+        console.log("buttons done tested");
     })
     test ('links - smoke test function', async ({page}) => {
         const linksPage = new LinksPage(page);
@@ -82,6 +88,7 @@ test.describe('Positive Testing Elements',() => {
         await linksPage.verifyNewPage();
         //call and verify API responds
         await linksPage.callAPIandVerify();
+        console.log("links done tested");
     })
     test ('udDown - smoke test function', async ({page}) => {
         const updown = new UpDownPage(page);
@@ -91,12 +98,14 @@ test.describe('Positive Testing Elements',() => {
         //inject a file to upload input
         await updown.injectUpload();
         await updown.verifyUpdload();
+        console.log("upload download done tested");
     })
     test ('dynamic property - smoke test function', async ({page}) => {
         const dynamic = new DynamicPage(page);
         await dynamic.goToDynamicProperty();
         await dynamic.waitToEnable();
         await dynamic.verifyDifferent();
+        console.log("dynamic property done tested");
     })
 });
 test.describe('Positive Testing - Alrets',() => {
@@ -113,12 +122,14 @@ test.describe('Positive Testing - Alrets',() => {
         //issue - alret doesn't appear
         await alret.goToAlret();
         await alret.directAlret();
+        console.log("alret done tested");
     })
     test ('modal - smoke test function', async ({page}) => {
         const modal = new ModalPage(page);
         await modal.goToModal();
         await modal.smallModal();
         await modal.verifySmallModal();
+        console.log("modal done tested");
     })
 });
 test.describe('Positive Testing - Widget',() => {
@@ -140,12 +151,14 @@ test.describe('Positive Testing - Widget',() => {
         await progressBar.verifyProgress100();
         await progressBar.resetProgress();
         await progressBar.verifyresetProgress();
+        console.log("progress bar done tested");
     })
     test ('slide bar - smoke test function', async ({page}) => {
         const slidebar = new SliderPage(page);
         await slidebar.goToSlider();
         await slidebar.slideTo40();
         await slidebar.verifySlider40();
+        console.log("slide bar done tested");
     })
     test ('auto complate - smoke test function', async ({page}) => {
         const auto = new AutoPage(page);
@@ -154,6 +167,7 @@ test.describe('Positive Testing - Widget',() => {
         await auto.verifyMutliAuto();
         await auto.inputSingleAuto();
         await auto.verifySingleAuto();
+        console.log("auto complate done tested");
     })
 });
 
