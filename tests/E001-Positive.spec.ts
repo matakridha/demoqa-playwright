@@ -26,8 +26,8 @@ test.describe('Positive Testing Elements',() => {
         test.setTimeout(120000);
         await page.goto(global.BASE_URL);
         await expect(page).toHaveURL(global.BASE_URL);
-        test.setTimeout(2000);
-        await HomePage.goToAlrets();
+       // test.setTimeout(2000);
+        await HomePage.goToElement();
     })
     test ('text box - smoke test function', async ({page}) =>{
         const TextBox = new textBox(page);
