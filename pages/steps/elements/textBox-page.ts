@@ -45,9 +45,9 @@ export class textBox {
         
         //verify element have same value as expected
         expect(nameText).toContain('Name:'+ rName);
-        expect(emailText).toContain('Name:'+ rEmail);
-        expect(cAddressText).toContain('Name:'+ rCaddress);
-        expect(pAddressText).toContain('Name:'+ rPaddress);
+        expect(emailText).toContain('Email:'+ rEmail);
+        expect(cAddressText).toContain('Current Address :'+ rCaddress);
+        expect(pAddressText).toContain('Permananet Address :'+ rPaddress);
     }
 
     async inputIncorrectEmail(){
